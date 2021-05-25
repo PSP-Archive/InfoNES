@@ -1,0 +1,16 @@
+AR = mipsel-elf-ar
+CC= mipsel-elf-gcc
+LD= mipsel-elf-gcc -static
+STRIP= mipsel-elf-strip
+
+ARCHFLAGS=-march=r4000 -mgp32 -mlong32 -msingle-float -mabi=eabi 
+CFLAGS= -O3 -std=c99 $(ARCHFLAGS)\
+#	-Wpointer-arith -Wbad-function-cast -Wcast-align -Waggregate-return \
+#	-Wshadow -Wstrict-prototypes -Wundef \
+#	-Wformat-security -Wwrite-strings \
+#	-Wall -Wno-sign-compare -Wunused \
+#	-Wdisabled-optimization -funsigned-char \
+
+INCLUDES=
+LDFLAGS=-march=r4000 -mgp32 -mlong32 -msingle-float -nostartfiles -Wl,-Ttext=0x08900000,-M=$(BINARY).map
+
